@@ -9,21 +9,25 @@ import UIKit
 // swiftlint.ymlを導入しましたが、作成方法はあっていますでしょうか？(機能しているのでしょうか？)
 class ViewController: UIViewController {
     @IBOutlet private weak var countNumberLabel: UILabel!
-    var number: Int = 0
+
+    private var number = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        countNumberLabel.text = "0"
+        updateCountNumberLabel()
     }
 
     @IBAction private func countUpButton(_ sender: UIButton) {
         number += 1
-        countNumberLabel.text = String(number)
+        updateCountNumberLabel()
     }
 
     @IBAction private func clearButton(_ sender: Any) {
         number = 0
+        updateCountNumberLabel()
+    }
+
+    private func updateCountNumberLabel() {
         countNumberLabel.text = String(number)
     }
 }
